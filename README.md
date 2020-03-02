@@ -7,7 +7,7 @@ Test Bed Node.js Express And Javascript(ECMAScript6)
 - javascript는 느슨한 타입(Loosely Typed) 언어, 또는 동적(Dynamic)언어 이다. 그 말은, >`변수 선언 시 변수의 타입을 미리 선언할 필요가 없다`는 뜻이다. Type은 프로그램이 컴파일되는 과정에서 자동적으로 할당된다.
 ### 1.1 기본 자료형(Type Primitive)
 - Boolean<br>
->`True` OR >`False`
+`True` OR >`False`
 ```javascript
 typeof true
 // 'boolean'
@@ -33,22 +33,29 @@ typeof Infinity // number
 typeof 1.5      // number
 ```
 - String<br>
-an array of characters i.e words<br>
->`String` 타입은 텍스트 데이터를 표현하는데 사용<br>
+an array of characters i.e words<br
+`String` 타입은 텍스트 데이터를 표현하는데 사용<br>
 부호없는 16bit 정부 값 요소들의 집합<br>
 자바스크립트의 문자열은 변경 불가능(Immutable)<br>
->`탈출 문자(Escape character)`등을 사용하게 되면 복잡한 자료구조도 문자열로 표현할 수 있다.
+`탈출 문자(Escape character)`등을 사용하게 되면 복잡한 자료구조도 문자열로 표현할 수 있다.
 ```javascript
 typeof 'a' // String
 ```
 - Symbol<br>
 a unique value that's not equal to any other value<br>
-유니크한 값, 그 어떠한 동일한 값도 없다.
+유니크한 값, 그 어떠한 동일한 값도 없다.<br>
+ECMAScript6에서 새롭게 추가된 데이터 타입, 유일하고 변경 불가능한(immutable) 기본 값
 ```javascript
 typeof Symbol('a') // Symbol
 Symbol('a') === Symbol('a') // false
 ```
 ### 1.2 Object
+- 식별자(Identifier)로 참조할 수 있는 메모리에 있는 데이터<br>
+- 자바스크립트에서 객체는 속성(Properties)들을 담고 있는 가방(Collection)<br>
+- Object Literal Syntax)으로 제한적으로 몇가지 속성을 초기화 할 수 있고, 속성을 추가 또는 삭제가 가능<br>
+- 속성 값은 객체를 포함해 어떠한 자료형도 될 수 있고, 이로 인해 복잡한 데이터 구조를 형성하는게 가능<br>
+- 속성은 키(key) 값으로 식별되면 키 값의 데이터 타입은 String 또는 Symbol 값을 가진다.
+
 
 ## 1. What the hell Javascript?
 ## ES5/6의 수정 및 추가된 부분
