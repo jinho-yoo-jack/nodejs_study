@@ -2,6 +2,45 @@
 Test Bed Node.js Express And Javascript(ECMAScript6)
 
 # Javascript
+## 1. Data Type
+- Boolean<br>
+True OR False
+```javascript
+typeof true
+// 'boolean'
+```
+- Null<br>
+No value, 값이 없다.
+```javascript
+typeof null
+```
+- Undefined<br>
+a declared variable but hasn't been given a value
+정의되어 있는 변수, 그러나 주어진 값은 없다.
+```javascript
+typeof undefined // 'undefined'
+```
+- Number<br>
+integer, floats, etc
+```javascript
+typeof Infinity // number
+typeof 1.5      // number
+```
+- String<br>
+an array of characters i.e words
+문자의 배열
+```javascript
+typeof 'a' // String
+```
+- Symbol<br>
+a unique value that's not equal to any other value
+유니크한 값, 그 어떠한 동일한 값도 없다.
+```javascript
+typeof Symbol('a') // Symbol
+Symbol('a') === Symbol('a') // false
+```
+
+
 ## 1. What the hell Javascript?
 ## ES5/6의 수정 및 추가된 부분
 ### - Keyword 엄격 모드('use strict')
