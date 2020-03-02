@@ -4,7 +4,7 @@ Test Bed Node.js Express And Javascript(ECMAScript6)
 # Javascript
 ## 1. Data Type<br>
 ### 정의 : 
-- javascript는 느슨한 타입(Loosely Typed) 언어, 또는 동적(Dynamic)언어 이다. 그 말은, >`변수 선언 시 변수의 타입을 미리 선언할 필요가 없다`는 뜻이다. Type은 프로그램이 컴파일되는 과정에서 자동적으로 할당된다.
+- javascript는 느슨한 타입(Loosely Typed) 언어, 또는 동적(Dynamic)언어 이다. 그 말은, `변수 선언 시 변수의 타입을 미리 선언할 필요가 없다`는 뜻이다. Type은 프로그램이 컴파일되는 과정에서 자동적으로 할당된다.
 ### 1.1 기본 자료형(Type Primitive)
 - Boolean<br>
 `True` OR >`False`
