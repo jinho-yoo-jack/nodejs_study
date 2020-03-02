@@ -2,9 +2,12 @@
 Test Bed Node.js Express And Javascript(ECMAScript6)
 
 # Javascript
-## 1. Data Type
+## 1. Data Type<br>
+### 정의 : 
+- javascript는 느슨한 타입(Loosely Typed) 언어, 또는 동적(Dynamic)언어 이다. 그 말은, >`변수 선언 시 변수의 타입을 미리 선언할 필요가 없다`는 뜻이다. Type은 프로그램이 컴파일되는 과정에서 자동적으로 할당된다.
+### 1.1 기본 자료형(Type Primitive)
 - Boolean<br>
-True OR False
+>`True` OR >`False`
 ```javascript
 typeof true
 // 'boolean'
@@ -15,31 +18,37 @@ No value, 값이 없다.
 typeof null
 ```
 - Undefined<br>
-a declared variable but hasn't been given a value
-정의되어 있는 변수, 그러나 주어진 값은 없다.
+a declared variable but hasn't been given a value<br>
+정의되어 있는 변수, 그러나 주어진 값은 없다. javascript에서는 변수를 선언하고 초기화 하지 않으면 >`undefined` 초기화 된다.
 ```javascript
 typeof undefined // 'undefined'
 ```
 - Number<br>
+배정밀도 64비트 형식 IEEE 754 값 (-(2^53 -1)와 2^53-1 사이의 숫자 값<br>
+정수만을 표현하기 위한 특별한 자료형은 없다.<br>
+javascript에서만 존재하는 상징적인 값들이 존재(+/-Infinity, NaN)<br>
 integer, floats, etc
 ```javascript
 typeof Infinity // number
 typeof 1.5      // number
 ```
 - String<br>
-an array of characters i.e words
-문자의 배열
+an array of characters i.e words<br>
+>`String` 타입은 텍스트 데이터를 표현하는데 사용<br>
+부호없는 16bit 정부 값 요소들의 집합<br>
+자바스크립트의 문자열은 변경 불가능(Immutable)<br>
+>`탈출 문자(Escape character)`등을 사용하게 되면 복잡한 자료구조도 문자열로 표현할 수 있다.
 ```javascript
 typeof 'a' // String
 ```
 - Symbol<br>
-a unique value that's not equal to any other value
+a unique value that's not equal to any other value<br>
 유니크한 값, 그 어떠한 동일한 값도 없다.
 ```javascript
 typeof Symbol('a') // Symbol
 Symbol('a') === Symbol('a') // false
 ```
-
+### 1.2 Object
 
 ## 1. What the hell Javascript?
 ## ES5/6의 수정 및 추가된 부분
