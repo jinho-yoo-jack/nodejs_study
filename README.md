@@ -19,7 +19,7 @@ typeof null
 ```
 - Undefined<br>
 a declared variable but hasn't been given a value<br>
-정의되어 있는 변수, 그러나 주어진 값은 없다. javascript에서는 변수를 선언하고 초기화 하지 않으면 >`undefined` 초기화 된다.
+정의되어 있는 변수, 그러나 주어진 값은 없다. javascript에서는 변수를 선언하고 초기화 하지 않으면 `undefined` 초기화 된다.
 ```javascript
 typeof undefined // 'undefined'
 ```
