@@ -6,24 +6,24 @@ Test Bed Node.js Express And Javascript(ECMAScript6)
 ### 정의 : 
 - javascript는 느슨한 타입(Loosely Typed) 언어, 또는 동적(Dynamic)언어 이다. 그 말은, `변수 선언 시 변수의 타입을 미리 선언할 필요가 없다`는 뜻이다. Type은 프로그램이 컴파일되는 과정에서 자동적으로 할당된다.
 ### 1.1 기본 자료형(Type Primitive)
-- Boolean<br>
+1. Boolean<br>
 `True` OR >`False`
 ```javascript
 typeof true
 // 'boolean'
 ```
-- Null<br>
+2. Null<br>
 No value, 값이 없다.
 ```javascript
 typeof null
 ```
-- Undefined<br>
+3. Undefined<br>
 a declared variable but hasn't been given a value<br>
 정의되어 있는 변수, 그러나 주어진 값은 없다. javascript에서는 변수를 선언하고 초기화 하지 않으면 `undefined` 초기화 된다.
 ```javascript
 typeof undefined // 'undefined'
 ```
-- Number<br>
+4. Number<br>
 배정밀도 64비트 형식 IEEE 754 값 (-(2^53 -1)와 2^53-1 사이의 숫자 값<br>
 정수만을 표현하기 위한 특별한 자료형은 없다.<br>
 javascript에서만 존재하는 상징적인 값들이 존재(+/-Infinity, NaN)<br>
@@ -32,7 +32,7 @@ integer, floats, etc
 typeof Infinity // number
 typeof 1.5      // number
 ```
-- String<br>
+5. String<br>
 an array of characters i.e words<br
 `String` 타입은 텍스트 데이터를 표현하는데 사용<br>
 부호없는 16bit 정부 값 요소들의 집합<br>
@@ -41,7 +41,7 @@ an array of characters i.e words<br
 ```javascript
 typeof 'a' // String
 ```
-- Symbol<br>
+6. Symbol<br>
 a unique value that's not equal to any other value<br>
 유니크한 값, 그 어떠한 동일한 값도 없다.<br>
 ECMAScript6에서 새롭게 추가된 데이터 타입, 유일하고 변경 불가능한(immutable) 기본 값
@@ -49,7 +49,25 @@ ECMAScript6에서 새롭게 추가된 데이터 타입, 유일하고 변경 불�
 typeof Symbol('a') // Symbol
 Symbol('a') === Symbol('a') // false
 ```
+7. Function
+- 큰 프로그램을 잘게 쪼개어 특정 코드 뭉치를 반복해서 사용할 수 있도록 묶어놓은 코드 뭉치의 단위
+- 함수를 어떻게 작성하느냐에 따라서 코드의 유지보수성과 가독이 크게 달라지고, javascript에서는 함수가 가지고 있는 힘이 강하기 때문에 함수의 중요성이 높다.
+```javascript
+// 7-1. Default Function
+function add(x,y){
+    const result = x+y;
+    return result;
+}
+
+// 7-2. Call Function
+add(1,2); // return 3
+
+```
+7-1. function 이라는 키워드를 이용하여 함수정의를 시작하고 `add`라는 함수이름을 가지고, `x`와`y`는 `매개변수(parameter)`라 하며 `return`키워드는 반환값(return value)라고 한다.
+7-2. 함수를 선언한 이후에는 적절한 시점에 function을 호출해야한다. 호출하는 방법은 이렇게 `함수이름(arg1,arg2, ....);` 호출하면 된다. 괄호 안에 넘겨준 1,2을 인수(argument)라고 부른다.
+
 ### 1.2 Object
+@속성
 - 객체는 여러가지 데이터 타입(Type)을 담을 수 있는 Container이며 <br>
 - 데이터의 형태는 키와 값(Key-Value) 한 쌍(Pair)의 형식 데이터를 저장한다.<br>
 - 이렇게 저장된 데이터를 `속성(Property)` 이라 부른다.<br>
@@ -98,11 +116,12 @@ obj1.name = 'Lim';
 console.log(obj1.name); // Lim
 
 ```
-
+@메소드(Method)
+- 객체의 속성 값으로 Type Function를 가지는 속성을 메소드라고 부른다.<br>
+- 메소드 안에서는 'this'라는 키워드를 사용할 수 있으며, 'this'는 메소드 호출 시에 해당하는 메소드를 갖고 있는 객체를 가리킨다.<br>
+- 메소드를 사용하면 데이터와 그 데이터와 관련된 동작을 객체라는 하나의 단위로 묶어서 다룰 수 있게 된다. 이 부분이 함수 대신 메소드를 사용하는 이유이다.<br>
+```javascript
 // @Object Method
-// 객체의 속성 값으로 Type Function를 가지는 속성을 메소드라고 부른다.
-// 메소드 안에서는 'this'라는 키워드를 사용할 수 있으며, 'this'는 메소드 호출 시에 해당하는 메소드를 갖고 있는 객체를 가리킨다.
-// 메소드를 사용하면 데이터와 그 데이터와 관련된 동작을 객체라는 하나의 단위로 묶어서 다룰 수 있게 된다. 이 부분이 함수 대신 메소드를 사용하는 이유이다.
 let obj2 = {
     name : 'JHY',
     sayBye : function(){
