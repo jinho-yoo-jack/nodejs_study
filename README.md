@@ -51,6 +51,7 @@ Symbol('a') === Symbol('a') // false
 ```
 7. *Function*
 - 큰 프로그램을 잘게 쪼개어 특정 코드 뭉치를 반복해서 사용할 수 있도록 묶어놓은 코드 뭉치의 단위<br>
+- *함수는 `Function`생성자로 부터 생성되는 객체이다.* 다른 객체들과는 다르게 `호출 할 수 있다(Callable)`
 - 함수를 어떻게 작성하느냐에 따라서 코드의 유지보수성과 가독이 크게 달라지고, javascript에서는 함수가 가지고 있는 힘이 강하기 때문에 함수의 중요성이 높다.
 ```javascript
 // 7-1. Default Function
@@ -62,11 +63,168 @@ function add(x,y){
 // 7-2. Call Function
 add(1,2); // return 3
 
+// 7-4. Scope Variable in Function
+console.log(x);
 ```
-7-1. function 이라는 키워드를 이용하여 함수정의를 시작하고 `add`라는 함수이름을 가지고, `x`와`y`는 `매개변수(parameter)`라 하며 `return`키워드는 반환값(return value)라고 한다.<br>
-7-2. 함수를 선언한 이후에는 적절한 시점에 반드시 function을 호출해야 함수가 실행된다. 호출하는 방법은 이렇게 `함수이름(arg1,arg2, ....);` 호출하면 된다. 괄호 안에 넘겨준 1,2을 인수(argument)라고 부른다.<br>
+7-1. Define Function<br>
+* function 이라는 키워드를 이용하여 함수정의를 시작하고 `add`라는 함수이름을 가지고, `x`와`y`는 `매개변수(parameter)`라 하며 `return`키워드는 반환값(return value)라고 한다.<br>
+
+7-2. Call Function
+* 함수를 선언한 이후에는 적절한 시점에 반드시 function을 호출해야 함수가 실행된다. 호출하는 방법은 이렇게 `함수이름(arg1,arg2, ....);` 호출하면 된다. 괄호 안에 넘겨준 1,2을 인수(argument)라고 부른다.<br>
 
 7-3. parameter and argument<br>
+* 위 코드의 `x`와 `y`를 매개변수라고 한다. 이 매개변수는 변수의 일종으로 함수 호출 시마다 인수가 매개변수에 대입된다. 위 코드 add(1,2) 처럼 x = 1, y = 2 이렇게 인자가 매개변수에 대입된 후, function의 body가 실행된다.
+
+7-4. *Scope*
+* 함수의 매개변수를 비롯한, 모든 변수들은 특별한 성질을 가지고 있다. 7-4번 코드처럼 함수 안에서 정의된 변수는 함수 바깥에서는 접근할 수 없다. 함수 내부에 선언된 것들은 오직 함수안에서만 사용이 가능하다. 즉, 변수는 코드의 일정 범위 안에서만 유효하다. 이렇게 유효범위를 Scope(스코프)라고 한다.
+* 코드의 실행 흐름이 식별자에 도달하면, 먼저 그 식별자와 같은 이름을 갖는 변수를 현재 스코프에서 찾아본다. 변수가 존재하면 그것을 그대로 사용하고 그렇지 않으면 `[[SCOPE]]데이터 속성(Type Array)`에 정의되어 있는 바깥 상위 스코프에서 순서대로 변수를 찾는다. 이것을 *Scope Chain(스코프 체인)*이라고 한다.
+
+7-5. 값으로서의 함수
+* *1급 시민(First-Class Citizen)*에 대해서 학습하기!
+```javascript
+//@함수를 변수에 할당하는 경우
+function add(x,y){
+    return x+y;
+}
+const plus = add;
+console.log(plus); // [Function: add]
+plus(3,4); // 7
+
+//@함수를 인자로 넘기는 경우
+function isEven(x){
+    return x % 2
+}
+let result = [1,2,3,4,5].filter(isEven);
+console.log('result ::: %j',result);
+
+//@함수에서 함수 반환하는 경우
+function createEptyFunc(){
+    function func(){}
+    return func();
+}
+```
+7-7. 익명함수(Anonymous Function)
+* 이름이 없는 Function
+```javascript
+// 익명함수, 호출 할 수 없다.
+function(x,y){
+    return x+y;
+};
+
+// 익명함수를 호출하려면 변수에 함수를 선언하거나, callback 부분에 정의행한다.
+let add = function(x,y){ return x+y; };
+add(4,5); // 9
+
+[1,2,3,4,5].filter(function(x){
+    return x %2 === 0;
+    }); // [2,4]
+```
+7-8. 주인 없는 this
+* `this`는 생성자 혹은 메소드에서 객체를 가리키는 걸로 사용되는 키워드이다. 하지만, 생성자나 메소드가 아닌 함수에서 `this`키워드를 사용하게 되면 전역객체(Global Object, GO)를 가리키게 된다.
+```javascript
+function Person(name){
+    this.name = name;
+};
+Person('john');
+console.log(window.name); // john
+```
+7-9. 엄격 모드(Strict Mode)
+* javascript 버전의 특징으로 *몇 가지 문법에 대해 제약사항*을 추가한다. 예를 들어, `this`를 사용했을 때, 전역 객체 대신 `undefined`를 반환한다.
+```javascript
+function Person(name){
+    'use strict';
+    
+    this.name = name;
+};
+Person('john'); // Error : Uncaught TypeError: Cannot set property 'name' of undefined 
+                //         at Person
+                //         at <anonymous>:6:1
+```
+7-10. this 바꿔치기
+* `this`는 때에 따라 다른 값을 가리킨다. 심지어 *우리가 원하는 값을 가리키게 만들 수도 있는데,* 함수 객체의 `bind`,`call`,`apply` 메소드를 사용하면 바꿔치기를 할 수 있다.
+* 함수 객체의 `bind` 메소드를 호출되면, 메소드의 *인수로 넘겨준 값이 `this`가 되는 새로운 함수*를 반환한다.
+```javascript
+function printGrade(grade){
+    console.log(`${this.name} 님의 점수는 ${grade}점 입니다.`);
+};
+
+const student = {
+    name : 'Mary'
+};
+
+// @bind(Object_this);
+const printGradeForMary = printGrade.bind(student);
+// printGrade함수 블럭에서 this는 student를 가리킨다.
+printGradeForMary(100, 'korean'); // 결과 : Mary님의 점수는 100점 입니다.
+// printGrade 함수에 인자를 전달한다.
+
+// @call(Object_this, parameter);
+printGrade.call(student, 100, 'math');
+
+// @apply(Object_this, [parameter#1, parameter#2 ...]);
+printGrade.apply(student, [100, 'english']);
+
+```
+7-11. arguments와 Rest parameters
+* `function`구문을 통해 생성된 함수가 호출될 때는, `arguments`라는 변수가 함수 내부에 자동으로 생성된다. `arguments`는 유사 배열 객체(array-like-object)이자 반복 가능한 객체(iterable object)로, 함수에 주어진 인수가 순서대로 저장되기 때문에 index를 가지고 인수를 읽어오거나 `for ... of`를 통해서 순회 할 수 있다.
+```javascript
+// Before ES5, Expression arguments 
+function add(x,y){
+    console.log(arguments[0], arguments[1]);
+    return x+y;
+};
+
+add(1,2); //3
+
+function sum(){
+    let result = 0;
+    for(let item of arguments){
+        result += item;
+    }
+    
+    return result;
+};
+sum(1,2,3,4,5,6,7);
+
+// After ES5, Rest parameters
+// 매개변수 앞에 '...'을 붙여주면 해당 매개변수에 모든 인수가 저장된다.
+// ns에는 1,2,3,4,5 모두가 저장된다.
+// 해당 문법에서 조심해야 할 부분은 parameters 가 복수 일경우, *마지막 매개변수*에만 사용할 수 있다.
+function sum1(...ns){
+    let result = 0;
+    for(let item of ns){
+        result += item;
+    }
+    console.log(result);
+    return result;
+};
+sum1(1,2,3,4,5);
+
+```
+7-12. Arrow Function(ES6)
+* 화살표 함수는 ES6에 도입된 '새로운 유형의 함수' 이다. 형식은 `(parameters) => {Function Body}` 이다.
+* 특정 조건을 만족하게 되면 더 간결한 문법으로 사용할 수 있다.<br>
+ 1. 만약 매개변수가 하나라면, 괄호를 생략 할 수 있다.
+ 2. 함수의 내부가 하나의 구문으로 이루어졌다면, 중괄호를 생략할 수 있다. *이 때 이 구문의 `결과값`이 곧 함수의 반환 값이 된다.*
+```javascript
+// Arrow Function
+const sum = (x,y) => {
+    return x+y;
+};
+sum(1,2);
+
+// More Sample 문법
+const add = (x,y) => x+y;
+const negate = x => !x;
+
+
+
+
+```
+
+
+
+
 
 
 ### 1.2 Object
