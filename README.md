@@ -49,8 +49,8 @@ ECMAScript6에서 새롭게 추가된 데이터 타입, 유일하고 변경 불�
 typeof Symbol('a') // Symbol
 Symbol('a') === Symbol('a') // false
 ```
-7. Function
-- 큰 프로그램을 잘게 쪼개어 특정 코드 뭉치를 반복해서 사용할 수 있도록 묶어놓은 코드 뭉치의 단위
+7. *Function*
+- 큰 프로그램을 잘게 쪼개어 특정 코드 뭉치를 반복해서 사용할 수 있도록 묶어놓은 코드 뭉치의 단위<br>
 - 함수를 어떻게 작성하느냐에 따라서 코드의 유지보수성과 가독이 크게 달라지고, javascript에서는 함수가 가지고 있는 힘이 강하기 때문에 함수의 중요성이 높다.
 ```javascript
 // 7-1. Default Function
@@ -63,8 +63,11 @@ function add(x,y){
 add(1,2); // return 3
 
 ```
-7-1. function 이라는 키워드를 이용하여 함수정의를 시작하고 `add`라는 함수이름을 가지고, `x`와`y`는 `매개변수(parameter)`라 하며 `return`키워드는 반환값(return value)라고 한다.
-7-2. 함수를 선언한 이후에는 적절한 시점에 function을 호출해야한다. 호출하는 방법은 이렇게 `함수이름(arg1,arg2, ....);` 호출하면 된다. 괄호 안에 넘겨준 1,2을 인수(argument)라고 부른다.
+7-1. function 이라는 키워드를 이용하여 함수정의를 시작하고 `add`라는 함수이름을 가지고, `x`와`y`는 `매개변수(parameter)`라 하며 `return`키워드는 반환값(return value)라고 한다.<br>
+7-2. 함수를 선언한 이후에는 적절한 시점에 반드시 function을 호출해야 함수가 실행된다. 호출하는 방법은 이렇게 `함수이름(arg1,arg2, ....);` 호출하면 된다. 괄호 안에 넘겨준 1,2을 인수(argument)라고 부른다.<br>
+
+7-3. parameter and argument<br>
+
 
 ### 1.2 Object
 @속성
