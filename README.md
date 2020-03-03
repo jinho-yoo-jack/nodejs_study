@@ -59,17 +59,46 @@ Symbol('a') === Symbol('a') // false
 const obj = {
     company : 'i-bricks',
     name : 'YJH',
-    rank : (number) => {
-        return number;
+    sayHello : () => {
+        return 'Hello Javascript';
     },
     skills : ['node.js','javascript/ajax/jquery','Elasticsearch','DB_SQL'],
     '한국 나이' : 20
 };
 
-// Object Property Accessor
+// @Object Property Accessor
 const obj1 = {}; // Empty Object
+
+// 1. Write Property
 obj1.company = 'TEST'; // Dot notation : 객체 속성 접근법 중 가장 흔한 방법
 obj1['한국 나이'] = 20;  // Bracket notation : 객체 속성의 식별자에 허용되지 않는 문자를 사용하는 경우 사용
+
+// 2. Read Property
+console.info(obj1.company);     // 'TEST' 출력
+console.info(obj1['한국 나이']);  // 20 출력
+
+// 3. Add New Property
+obj1.name = 'LYJ';
+obj1['한국 회사명'] = '아이브릭스';
+
+// 4. Delete Property
+delete obj1.name;
+
+// 5. Check for Object Property Existence
+'name' in obj1;     // false
+'company' in obj1;  // true
+
+// @Object Method
+// 객체의 속성 값으로 Type Function를 가지는 속성을 메소드라고 부른다.
+// 메소드 안에서는 'this'라는 키워드를 사용할 수 있으며, 'this'는 메소드 호출 시에 해당하는 메소드를 갖고 있는 객체를 가리킨다.
+let obj2 = {
+    name : 'JHY',
+    sayBye : function(){
+        // 여기서 'this'는 obj2를 가리키며 name 속성 값에 접근 할 수 있다.
+        return `GoodBye ${this.name}`;
+    }
+};
+console.log(obj2.sayBye()); // 출력 : GoodBye JHY
 ```
 
 
