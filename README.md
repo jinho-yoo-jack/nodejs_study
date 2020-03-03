@@ -50,11 +50,28 @@ typeof Symbol('a') // Symbol
 Symbol('a') === Symbol('a') // false
 ```
 ### 1.2 Object
-- 식별자(Identifier)로 참조할 수 있는 메모리에 있는 데이터<br>
-- 자바스크립트에서 객체는 속성(Properties)들을 담고 있는 가방(Collection)<br>
-- Object Literal Syntax)으로 제한적으로 몇가지 속성을 초기화 할 수 있고, 속성을 추가 또는 삭제가 가능<br>
-- 속성 값은 객체를 포함해 어떠한 자료형도 될 수 있고, 이로 인해 복잡한 데이터 구조를 형성하는게 가능<br>
-- 속성은 키(key) 값으로 식별되면 키 값의 데이터 타입은 String 또는 Symbol 값을 가진다.
+- 객체는 여러가지 데이터 타입(Type)을 담을 수 있는 Container이며 <br>
+- 데이터의 형태는 키와 값(Key-Value) 한 쌍(Pair)의 형식 데이터를 저장한다.<br>
+- 이렇게 저장된 데이터를 `속성(Property)` 이라 부른다.<br>
+- 속성의 Key 를 식별자(Identifier)라고 하며, 식별자에 사용하지 못하는 문자열을 사용하는 경우에는 `반드시 문자열 표기`를 사용해야 한다.
+```javascript
+// Object Literal
+const obj = {
+    company : 'i-bricks',
+    name : 'YJH',
+    rank : (number) => {
+        return number;
+    },
+    skills : ['node.js','javascript/ajax/jquery','Elasticsearch','DB_SQL'],
+    '한국 나이' : 20
+};
+
+// Object Property Accessor
+const obj1 = {}; // Empty Object
+obj1.company = 'TEST'; // Dot notation : 객체 속성 접근법 중 가장 흔한 방법
+obj1['한국 나이'] = 20;  // Bracket notation : 객체 속성의 식별자에 허용되지 않는 문자를 사용하는 경우 사용
+```
+
 
 
 ## 1. What the hell Javascript?
