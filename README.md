@@ -53,7 +53,8 @@ Symbol('a') === Symbol('a') // false
 - 객체는 여러가지 데이터 타입(Type)을 담을 수 있는 Container이며 <br>
 - 데이터의 형태는 키와 값(Key-Value) 한 쌍(Pair)의 형식 데이터를 저장한다.<br>
 - 이렇게 저장된 데이터를 `속성(Property)` 이라 부른다.<br>
-- 속성의 Key 를 식별자(Identifier)라고 하며, 식별자에 사용하지 못하는 문자열을 사용하는 경우에는 `반드시 문자열 표기`를 사용해야 한다.
+- 속성의 Key 를 식별자(Identifier)라고 하며, 식별자에 사용하지 못하는 문자열을 사용하는 경우에는 `반드시 문자열 표기`를 사용해야 한다.<br>
+- 속성의 Value로는 어떠한 값(Literal Value, Array, etc ...)이든 저장할 수 있으며, 함수를 저장하고 있는 property를 Method(메소드)라고 한다.<br>
 ```javascript
 // Object Literal
 const obj = {
@@ -65,7 +66,9 @@ const obj = {
     skills : ['node.js','javascript/ajax/jquery','Elasticsearch','DB_SQL'],
     '한국 나이' : 20
 };
-
+```
+- 속성 설정
+```javascript
 // @Object Property Accessor
 const obj1 = {}; // Empty Object
 
@@ -88,9 +91,18 @@ delete obj1.name;
 'name' in obj1;     // false
 'company' in obj1;  // true
 
+// 6. Modify Property Value
+obj1.name = 'LYJ';
+console.log(obj1.name); // LYJ
+obj1.name = 'Lim';
+console.log(obj1.name); // Lim
+
+```
+
 // @Object Method
 // 객체의 속성 값으로 Type Function를 가지는 속성을 메소드라고 부른다.
 // 메소드 안에서는 'this'라는 키워드를 사용할 수 있으며, 'this'는 메소드 호출 시에 해당하는 메소드를 갖고 있는 객체를 가리킨다.
+// 메소드를 사용하면 데이터와 그 데이터와 관련된 동작을 객체라는 하나의 단위로 묶어서 다룰 수 있게 된다. 이 부분이 함수 대신 메소드를 사용하는 이유이다.
 let obj2 = {
     name : 'JHY',
     sayBye : function(){
