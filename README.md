@@ -174,7 +174,7 @@ function add(x,y){
     return x+y;
 };
 
-add(1,2); //3
+add(1,2); // 3을 Return하고 1, 2를 출력한다.
 
 function sum(){
     let result = 0;
@@ -217,12 +217,30 @@ sum(1,2);
 const add = (x,y) => x+y;
 const negate = x => !x;
 
+```
+7-13. Argument Default value
+- Argument의 Default 값을 정의 할 수 있다. 인자가 없을 경우에만 적용된다.
+```javascript
+let f = (x, y=12) => {
+    // y is 12 if not passed (or passed as undefined)
+    return x + y;
+};
 
-
-
+f(3); // 15
+f(3,4); // 7
 ```
 
+7-14. Spread from Array to Arguments
+- 함수 호출 시, 배열의 일련의 인자로 나누어 전달 해준다.
+```
+let s = (x,y,z) => {
+    return x + y + z;
+};
 
+console.log(s(...[1,2,3]));
+
+let ary = [2,4,6];
+console.log(s(...ary));
 
 
 
@@ -293,9 +311,7 @@ let obj2 = {
 console.log(obj2.sayBye()); // 출력 : GoodBye JHY
 ```
 
-
-
-## 1. What the hell Javascript?
+## 2. ES5,6?
 ## ES5/6의 수정 및 추가된 부분
 ### - Keyword 엄격 모드('use strict')
 : 언어의 하위 집합으로 사용되지 않는 기능을 제외한다. 즉, 엄격 모드에서 코드를 실행하려면 다음 문자열을 사용하여 의도를 선언(함수당 한번, 또는 전체 프로그램에서 한번) 해야 한다. **strict 모드는 자바스크립트가 묵인했던 에러들의 에러 메시지를 발생시킵니다.**
